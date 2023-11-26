@@ -1,3 +1,4 @@
+# Warning: it didn't work with my attempts. Please use with caution.
 debian-on-termux
 ================
 
