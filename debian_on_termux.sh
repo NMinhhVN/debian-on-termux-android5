@@ -105,11 +105,11 @@ unset RESOLV
 DEBIAN_FRONTEND=noninteractive apt-get -yqq install coreutils perl proot sed wget gnupg $RESOLV
 hash -r
 
-# first try to patch the most recent original of debian debootstrap script
-# use the fallback cuz maybe it will work
+echo "patching $V failed using fallback"
 rm -rf debootstrap
 V=debootstrap_1.0.119
 wget "https://github.com/sp4rkie/debian-on-termux/blob/master/$V.tgz?raw=true" -qO - \
+        | tar xfz -
 V=$(echo "$V" | sed 's/_/-/g')
 ln -nfs "$V" debootstrap
 cd debootstrap
