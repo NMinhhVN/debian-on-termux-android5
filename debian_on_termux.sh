@@ -106,31 +106,13 @@ DEBIAN_FRONTEND=noninteractive apt-get -yqq install coreutils perl proot sed wge
 hash -r
 
 # first try to patch the most recent original of debian debootstrap script
-rm -rf debootstrap
-V=$(wget http://http.debian.net/debian/pool/main/d/debootstrap/ -qO - \
-    | sed 's/<[^>]*>//g' \
-    | grep -E '\.[0-9]+\.tar\.gz' \
-    | tail -n 1 \
-    | sed 's/^ +//g;s/.tar.gz.*//g')
-wget "http://http.debian.net/debian/pool/main/d/debootstrap/$V.tar.gz" -qO - | tar xfz -
-V=$(echo "$V" | sed 's/_/-/g')
-ln -nfs "$V" debootstrap
-cd debootstrap
-
-patchme || {
-# if the above fails patch the last known good backup of an 
-# older version of debian debootstrap script
-cd
-echo "patching $V failed using fallback"
+# use the fallback cuz maybe it will work
 rm -rf debootstrap
 V=debootstrap_1.0.119
 wget "https://github.com/sp4rkie/debian-on-termux/blob/master/$V.tgz?raw=true" -qO - \
-        | tar xfz -
 V=$(echo "$V" | sed 's/_/-/g')
 ln -nfs "$V" debootstrap
 cd debootstrap
-patchme
-}
 
 #
 # fix https://github.com/sp4rkie/debian-on-termux/issues/21
