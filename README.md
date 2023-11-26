@@ -17,7 +17,7 @@ how to use it
 - optionally modify the configuration lines near the top of the script
 - download `debian_on_termux_10.sh` (or `debian_on_termux.sh` if using an Android version before 10) and run it;
 
-        wget -q https://raw.githubusercontent.com/sp4rkie/debian-on-termux/master/debian_on_termux_10.sh && sh debian_on_termux_10.sh
+        wget -q https://raw.githubusercontent.com/NMinhhVN/debian-on-termux-android5/master/debian_on_termux.sh  && sh debian_on_termux.sh
 
 - Debian will be installed only if it is not already.
 - you will be proot-ed to Debian, type exit to return to termux.
